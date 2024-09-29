@@ -1,0 +1,33 @@
+name: Python Application
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to the branch you're working on if needed
+  pull_request:
+    branches:
+      - main  # Adjust this to the branch you're working on if needed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x  # Use your project's Python version
+
+    - name: Install dependencies
+      run: make install
+
+    - name: Run the application
+      run: |
+        make run &
+        sleep 10
+
+    - name: Stop running server
+      run: killall python || true  
