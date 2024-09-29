@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMeans Clustering</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> <!-- Plotly for plotting -->
+</head>
+<body>
+
+    <h1>KMeans Clustering Visualization</h1>
+
+    <!-- Control panel for KMeans operations -->
+    <div id="control-panel">
+        <div class="control-group">
+            <label for="k-value">Number of Clusters (k):</label>
+            <input id="k-value" type="number" value="3">  <!-- Input for number of clusters -->
+        
+            <label for="init-method">Initialization Method:</label>
+            <select id="init-method">
+                <option value="random">Random</option>
+                <option value="kmeans++">KMeans++</option>
+                <option value="farthest_first">Farthest First</option>
+                <option value="manual">Manual</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <button id="generate-dataset">Generate Dataset</button> <!-- Only generates dataset -->
+            <button id="run-kmeans">Run KMeans to Convergence</button> <!-- Only runs KMeans when pressed -->
+            <button id="step-through">Step Through KMeans</button> <!-- Step through KMeans iterations -->
+            <button id="reset">Reset Plot</button> <!-- Reset everything -->
+        </div>
+    </div>
+
+    <!-- Plot div for rendering Plotly visualizations -->
+    <div id="plot" style="width: 80%; height: 500px;"></div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script> <!-- Link to JS file -->
+</body>
+</html>
